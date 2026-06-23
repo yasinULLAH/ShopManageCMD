@@ -17,6 +17,7 @@ import uuid
 import json
 from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
 from pathlib import Path
+import ctypes
 
 # =====================================================================
 # GLOBAL UTILITIES & HELPERS
@@ -32,6 +33,17 @@ def D(val):
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def setup_console():
+    if os.name == 'nt':
+        try:
+            SW_MAXIMIZE = 3
+            ctypes.windll.user32.ShowWindow(
+                ctypes.windll.kernel32.GetConsoleWindow(), SW_MAXIMIZE
+            )
+        except:
+            pass
+        os.system("mode con: cols=90 lines=50 2>nul")
 
 def print_header(title):
     clear_screen()
@@ -3726,6 +3738,7 @@ class ShopManagerApp:
         self.utilities = UtilityManager(self.db, self.auth, self.audit)
 
     def run(self):
+        setup_console()
         while True:
             if not self.auth.current_user:
                 if not self.auth.login():
@@ -3736,68 +3749,76 @@ class ShopManagerApp:
         while self.auth.current_user:
             u = self.auth.current_user
             print_header(f"MAIN MENU - Logged in as: {u['username']} ({u['role']})")
-            print("  1. Dashboard & Today Summary")
-            print("  2. Sales / POS Terminal")
-            print("  3. Purchases Management")
-            print("  4. Products & Inventory Masters")
-            print("  5. Customers & Khata Ledger")
-            print("  6. Suppliers & Khata Ledger")
-            print("  7. Cash & Bank Accounts")
-            print("  8. Expenses Manager")
-            print("  9. Reports & Analytics")
-            print(" 10. Returns Processing")
-            print(" 11. Shop Settings")
-            print(" 12. Users & Security Control")
-            print(" 13. Backup & Restore DB")
-            print(" 14. Import / Export Data CSV")
-            print(" 15. Warehouses & Stock Transfer")
-            print(" 16. Quotations")
-            print(" 17. Sales Orders")
-            print(" 18. Purchase Orders")
-            print(" 19. Delivery Challans")
-            print(" 20. Credit / Debit Notes")
-            print(" 21. Employees")
-            print(" 22. Commissions")
-            print(" 23. Loyalty Points")
-            print(" 24. Price Lists")
-            print(" 25. Promotions & Coupons")
-            print(" 26. Serial Numbers")
-            print(" 27. Service / Repair Jobs")
-            print(" 28. Bill of Materials")
-            print(" 29. Manufacturing Jobs")
-            print(" 30. Accounting (Chart / Ledger)")
-            print(" 31. Financial Statements")
-            print(" 32. Fixed Assets")
-            print(" 33. Budgets")
-            print(" 34. Cash Register")
-            print(" 35. Email Config")
-            print(" 36. Help & Support")
-            print(" 37. Utility Functions")
-            print(" 38. Logout")
-            print("  S. Global Quick Search")
-            print("  0. Exit Application Safely")
+            items = [
+                ("1",  "Dashboard & Today Summary"),
+                ("2",  "Sales / POS Terminal"),
+                ("3",  "Products & Inventory Masters"),
+                ("4",  "Customers & Khata Ledger"),
+                ("5",  "Reports & Analytics"),
+                ("6",  "Purchases Management"),
+                ("7",  "Suppliers & Khata Ledger"),
+                ("8",  "Cash & Bank Accounts"),
+                ("9",  "Expenses Manager"),
+                ("10", "Returns Processing"),
+                ("11", "Shop Settings"),
+                ("12", "Users & Security Control"),
+                ("13", "Backup & Restore DB"),
+                ("14", "Import / Export Data CSV"),
+                ("15", "Quotations"),
+                ("16", "Sales Orders"),
+                ("17", "Purchase Orders"),
+                ("18", "Delivery Challans"),
+                ("19", "Warehouses & Stock Transfer"),
+                ("20", "Credit / Debit Notes"),
+                ("21", "Employees"),
+                ("22", "Commissions"),
+                ("23", "Loyalty Points"),
+                ("24", "Price Lists"),
+                ("25", "Promotions & Coupons"),
+                ("26", "Serial Numbers"),
+                ("27", "Service / Repair Jobs"),
+                ("28", "Bill of Materials"),
+                ("29", "Manufacturing Jobs"),
+                ("30", "Accounting (Chart / Ledger)"),
+                ("31", "Financial Statements"),
+                ("32", "Fixed Assets"),
+                ("33", "Budgets"),
+                ("34", "Cash Register"),
+                ("35", "Email Config"),
+                ("36", "Help & Support"),
+                ("37", "Utility Functions"),
+                ("38", "Logout"),
+            ]
+            mid = (len(items) + 1) // 2
+            col1 = items[:mid]
+            col2 = items[mid:]
+            for i in range(len(col1)):
+                left = f"{col1[i][0]:>2}. {col1[i][1]}"
+                right = f"{col2[i][0]:>2}. {col2[i][1]}" if i < len(col2) else ""
+                print(f"  {left:<38}  {right:<38}")
+            print("  S. Global Quick Search                        0. Exit Application Safely")
             print("-" * 75)
             c = input(" Select Option: ").strip().upper()
-            
+
             if c == '1': self.dash.show()
             elif c == '2': self.sales.menu()
-            elif c == '3': self.purchases.menu()
-            elif c == '4': self.masters.menu()
-            elif c == '5': self.customers.menu()
-            elif c == '6': self.suppliers.menu()
-            elif c == '7': self.finance.menu()
-            elif c == '8': self.expenses.menu()
-            elif c == '9': self.reports.menu()
+            elif c == '3': self.masters.menu()
+            elif c == '4': self.customers.menu()
+            elif c == '5': self.reports.menu()
+            elif c == '6': self.purchases.menu()
+            elif c == '7': self.suppliers.menu()
+            elif c == '8': self.finance.menu()
+            elif c == '9': self.expenses.menu()
             elif c == '10': self.returns_menu()
             elif c == '11': self.settings.menu()
             elif c == '12': self.security.menu()
             elif c == '13': self.backups.menu()
             elif c == '14': self.io.menu()
-            elif c == '15': self.warehouse.menu()
-            elif c == '16': self.quotations.menu()
-            elif c == '17': self.sales_orders.menu()
-            elif c == '18': self.purchase_orders.menu()
-            elif c == '19': self.challans.menu()
+            elif c == '15': self.quotations.menu()
+            elif c == '16': self.sales_orders.menu()
+            elif c == '17': self.purchase_orders.menu()
+            elif c == '18': self.challans.menu()
+            elif c == '19': self.warehouse.menu()
             elif c == '20': self.credit_debit.menu()
             elif c == '21': self.employees.menu()
             elif c == '22': self.commissions.menu()
