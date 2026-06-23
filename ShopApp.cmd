@@ -841,6 +841,7 @@ class Database:
             'ret_prefix': 'RET-',
             'low_stock_warn': '10',
             'backup_path': './backups',
+            'max_backups': '10',
             'date_format': '%Y-%m-%d',
             'footer_msg': 'Thank you for your business! Visit us again.'
         }
@@ -2286,13 +2287,18 @@ class BackupManager:
         while True:
             print_header("DATABASE BACKUP & RESTORE")
             print(f" Backup Folder: {Path(self.db.get_setting('backup_path','./backups')).resolve()}")
+            bfiles = sorted(Path(self.db.get_setting('backup_path','./backups')).glob("shop_manager_*.db"))
+            maxb = int(self.db.get_setting('max_backups','10'))
+            print(f" Backups: {len(bfiles)} (max: {maxb})")
             print("-" * 75)
             print(" 1. Create Manual Backup Now")
             print(" 2. Restore Database From Backup File")
+            print(" 3. Clean Old Backups (remove oldest beyond max)")
             print(" 0. Back")
             c = input(" Select: ").strip()
             if c == '1': self.backup()
             elif c == '2': self.restore()
+            elif c == '3': self.clean_old()
             elif c == '0': break
 
     def backup(self, auto=False):
@@ -2303,9 +2309,32 @@ class BackupManager:
         try:
             shutil.copy2(self.db.db_path, dest)
             self.audit.log("BACKUP", f"Created backup {dest.name}")
-            if not auto: print(f"\n [+] Backup created successfully: {dest.name}"); input(" Press [Enter]...")
+            if not auto: print(f"\n [+] Backup created successfully: {dest.name}")
+            self.rotate_backups()
+            if not auto: input(" Press [Enter]...")
         except Exception as e:
             if not auto: print(f"\n [!] Backup failed: {e}"); input(" Press [Enter]...")
+
+    def rotate_backups(self):
+        bdir = Path(self.db.get_setting('backup_path', './backups'))
+        maxb = max(int(self.db.get_setting('max_backups','10')), 1)
+        files = sorted(bdir.glob("shop_manager_*.db"), key=lambda f: f.stat().st_mtime)
+        while len(files) > maxb:
+            try: files[0].unlink(); files.pop(0)
+            except: break
+
+    def clean_old(self):
+        bdir = Path(self.db.get_setting('backup_path', './backups'))
+        files = sorted(bdir.glob("shop_manager_*.db"), key=lambda f: f.stat().st_mtime)
+        if not files: print(" [!] No backups to clean."); input(" Press [Enter]..."); return
+        maxb = int(self.db.get_setting('max_backups','10'))
+        kept, removed = files[-maxb:], files[:-maxb]
+        if not removed: print(f" Already within limit ({len(kept)} <= {maxb})."); input(" Press [Enter]..."); return
+        for f in removed:
+            try: f.unlink(); print(f"  - Deleted: {f.name}")
+            except: pass
+        self.audit.log("CLEAN_BACKUPS", f"Removed {len(removed)} old backups, kept {len(kept)}")
+        print(f" [+] Cleaned {len(removed)} old backups. {len(kept)} remaining."); input(" Press [Enter]...")
 
     def restore(self):
         bdir = Path(self.db.get_setting('backup_path', './backups'))
