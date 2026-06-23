@@ -2472,7 +2472,7 @@ class QuotationManager:
                 if not q: print(" [!] Not found/active"); input(" Press [Enter]..."); continue
                 inv = "INV-" + datetime.datetime.now().strftime("%Y%m%d%H%M%S"); now = datetime.datetime.now().isoformat(); dt = datetime.date.today().isoformat()
                 with self.db.conn:
-                    self.db.execute("INSERT INTO sales (invoice_no, customer_id, sale_date, subtotal, discount, tax, grand_total, paid_amount, balance_amount, status, created_by, created_at) VALUES (?,?,?,?,?,?,?,?,?,'COMPLETED',?,?)", (inv, q['customer_id'], dt, q['subtotal'], q['discount'], q['tax'], q['grand_total'], '0.00', q['grand_total'], self.auth.current_user['id'], now))
+                    self.db.execute("INSERT INTO sales (invoice_no, customer_id, customer_type, sale_date, subtotal, overall_discount, total_tax, grand_total, paid_amount, balance_amount, payment_method, account_id, created_by, created_at) VALUES (?,?,'Customer',?,?,?,?,?,?,'0.00',?,'',?,?)", (inv, q['customer_id'], dt, q['subtotal'], q['discount'] or '0', q['tax'] or '0', q['grand_total'], q['grand_total'], self.auth.current_user['id'], now))
                     sid = self.db.db.conn.execute("SELECT last_insert_rowid()").fetchone()[0]
                     its = self.db.fetch_all("SELECT * FROM quotation_items WHERE quotation_id=?", (q['id'],))
                     for it in its:
