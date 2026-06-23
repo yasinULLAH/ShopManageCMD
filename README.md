@@ -431,6 +431,7 @@ This application includes several console optimizations for a seamless terminal 
 | ret_prefix | Return prefix | RET- |
 | low_stock_warn | Low stock warning level | 10 |
 | backup_path | Backup folder path | ./backups |
+| max_backups | Max backup files to keep | 10 |
 | date_format | Date format | %Y-%m-%d |
 | footer_msg | Receipt footer message | Thank you for your business! |
 

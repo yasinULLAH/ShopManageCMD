@@ -528,6 +528,7 @@ Configure all **system-wide settings**. Admin only.
 | `ret_prefix` | Return prefix | RET- |
 | `low_stock_warn` | Low stock threshold | 10 |
 | `backup_path` | Backup directory | ./backups |
+| `max_backups` | Max backup files to keep (oldest auto-deleted) | 10 |
 | `date_format` | Date display format | %Y-%m-%d |
 | `footer_msg` | Receipt footer text | Thank you for your business! |
 | `allow_negative_stock` | Allow stock below zero? | 0 (No) |
