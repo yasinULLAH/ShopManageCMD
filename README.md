@@ -16,6 +16,12 @@
 
 ### Overview
 
+![Main Menu - 38 Features](screenshots/02_main_menu.png)
+*Two-column layout showing all 38 business management modules*
+
+![Logout](screenshots/20_logout.png)
+*Secure logout with audit trail and auto-backup*
+
 Shop Manager is a complete, terminal-based retail and wholesale business management system built in Python with SQLite database. It provides comprehensive tools for managing sales, purchases, inventory, accounting, customers, suppliers, employees, and much more — all from a command-line interface.
 
 ### Technology Stack
@@ -34,6 +40,9 @@ python ShopApp.cmd
 # Linux/Mac
 python3 ShopApp.cmd
 ```
+
+![Login Screen](screenshots/01_login.png)
+*Enter your credentials to access the Shop Management System*
 
 ### Default Login Credentials
 
@@ -136,6 +145,9 @@ This application includes several console optimizations for a seamless terminal 
 
 ### 1. Dashboard & Today Summary (Main Menu Option 1)
 
+![Executive Dashboard](screenshots/03_dashboard.png)
+*Real-time daily summary of sales, cash flow, and key metrics*
+
 **English**: Provides a real-time executive overview of your business for the current day.
 
 
@@ -158,6 +170,11 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 2. Sales / POS Terminal (Main Menu Option 2)
+
+![Sales / POS Terminal](screenshots/09_sales_pos.png)
+*Point of Sale system for creating customer invoices*
+![Sales Receipt](screenshots/11_sales_receipt.png)
+*Generated receipt with shop details, items, and payment summary*
 
 **English**: Point-of-Sale billing system for creating sales invoices.
 
@@ -187,6 +204,9 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 3. Products & Inventory Masters (Main Menu Option 3)
+
+![Add New Product Form](screenshots/05_add_product.png)
+*15+ field product entry form with category, brand, pricing, and stock*
 
 **English**: Complete product catalog and inventory management.
 
@@ -232,6 +252,9 @@ This application includes several console optimizations for a seamless terminal 
 
 ### 4. Customers & Khata Ledger (Main Menu Option 4)
 
+![Customers & Khata Ledger](screenshots/07_customers.png)
+*Customer management with full credit/debit ledger system*
+
 **English**: Complete customer management with credit ledger (Khata) system.
 
 **اردو**: مکمل کسٹمر مینجمنٹ کھاتا سسٹم کے ساتھ۔
@@ -255,6 +278,9 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 5. Reports & Analytics (Main Menu Option 5)
+
+![Reports & Analytics](screenshots/12_reports.png)
+*25+ reports across Sales, Purchases, Financials, Inventory & Audit*
 
 **English**: 25+ comprehensive reports across all business areas. All reports can be exported to CSV.
 
@@ -307,6 +333,9 @@ This application includes several console optimizations for a seamless terminal 
 
 ### 6. Purchases Management (Main Menu Option 6)
 
+![Purchases Management](screenshots/15_purchases.png)
+*Purchase invoices with batch/expiry tracking and supplier payments*
+
 **English**: Manage purchase invoices from suppliers.
 
 **اردو**: سپلائرز سے خریداری کے انوائس کا انتظام۔
@@ -351,6 +380,9 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 8. Cash & Bank Accounts (Main Menu Option 8)
+
+![Cash & Bank Accounts](screenshots/14_cash_bank.png)
+*Account balances, deposits, withdrawals, and fund transfers*
 
 **English**: Manage cash in hand and bank accounts with full transaction tracking.
 
@@ -413,6 +445,9 @@ This application includes several console optimizations for a seamless terminal 
 
 ### 11. Shop Settings (Main Menu Option 11)
 
+![Shop Settings](screenshots/16_settings.png)
+*Configure shop name, currency, tax rates, invoice prefixes, and more*
+
 **English**: Configure all system-wide settings. Admin only.
 
 **اردو**: سسٹم کی تمام سیٹنگز - صرف ایڈمن۔
@@ -440,6 +475,9 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 12. Users & Security Control (Main Menu Option 12)
+
+![Users & Security](screenshots/17_users.png)
+*Role-based access control with SHA-256 password hashing*
 
 **English**: Manage system users, roles, passwords, and audit logs. Admin only.
 
@@ -892,6 +930,11 @@ This application includes several console optimizations for a seamless terminal 
 
 ### 36. Help & Support (Main Menu Option 36)
 
+![Help](screenshots/18_help.png)
+*Built-in help system with searchable topics*
+
+
+
 **English**: Built-in help system with searchable topics and keywords.
 
 **اردو**: بلٹ ان ہیلپ سسٹم - تلاش کے ساتھ۔
@@ -906,6 +949,9 @@ This application includes several console optimizations for a seamless terminal 
 ---
 
 ### 37. Utility Functions (Main Menu Option 37)
+
+![Utility Functions](screenshots/19_utilities.png)
+*DB Statistics, Bulk Price Update, Stock Rebuild, and more*
 
 **English**: Quick utility tools for common tasks.
 

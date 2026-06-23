@@ -82,6 +82,9 @@ The CMD window will **auto-maximize** on launch. The console is set to **90 colu
 
 ## 2. Login & User Roles
 
+![Login](screenshots/01_login.png)
+*Secure login with role-based authentication*
+
 ### How Login Works
 
 1. App starts → shows `SHOP MANAGEMENT SYSTEM - LOGIN` screen
@@ -165,6 +168,9 @@ Permissions are enforced at **two levels**:
 
 ## 3. Main Menu Overview
 
+![Main Menu](screenshots/02_main_menu.png)
+*38 features in compact 2-column layout*
+
 The main menu uses a **two-column layout** with 38 options. Most-used features are at the top.
 
 ### Quick Menu Reference
@@ -198,6 +204,9 @@ The main menu uses a **two-column layout** with 38 options. Most-used features a
 
 ## 4. Dashboard (Menu 1)
 
+![Dashboard](screenshots/03_dashboard.png)
+*Real-time daily summary*
+
 ### What It Does
 Shows a **real-time executive summary** of today's business — sales, purchases, cash flow, expenses, and estimated profit.
 
@@ -220,6 +229,11 @@ Press `1` at the main menu. Review the data. Press Enter to return to main menu.
 ---
 
 ## 5. Sales / POS (Menu 2)
+
+![Sales POS](screenshots/09_sales_pos.png)
+*Point of Sale terminal*
+![Sales Receipt](screenshots/11_sales_receipt.png)
+*Generated receipt with shop details*
 
 ### What It Does
 Creates **sales invoices** (bills) for customers. Supports walk-in and registered customers. Automatically updates stock, customer balance, and cash/bank accounts.
@@ -256,6 +270,9 @@ Creates **sales invoices** (bills) for customers. Supports walk-in and registere
 ---
 
 ## 6. Products & Inventory (Menu 3)
+
+![Products](screenshots/05_add_product.png)
+*Product entry form with pricing and stock*
 
 ### What It Does
 Manages your entire **product catalog** — categories, brands, units, and individual products. Also handles stock adjustments, price history, and stock movement tracking.
@@ -308,6 +325,9 @@ Manages your entire **product catalog** — categories, brands, units, and indiv
 
 ## 7. Customers & Khata (Menu 4)
 
+![Customers](screenshots/07_customers.png)
+*Customer management with Khata ledger*
+
 ### What It Does
 Manages **customer records** and the **Khata (credit ledger)** system. Every sale on credit and every payment is tracked here.
 
@@ -352,6 +372,9 @@ Fields: Name, Phone, Address, Email, Opening Balance, Credit Limit.
 
 ## 8. Reports & Analytics (Menu 5)
 
+![Reports](screenshots/12_reports.png)
+*25+ reports*
+
 ### What It Does
 Provides **25+ reports** across all business areas. Every report can be **exported to CSV**.
 
@@ -395,6 +418,9 @@ Provides **25+ reports** across all business areas. Every report can be **export
 
 ## 9. Purchases (Menu 6)
 
+![Purchases](screenshots/15_purchases.png)
+*Purchase invoices management*
+
 ### What It Does
 Creates **purchase invoices** from suppliers. Automatically increases stock and updates supplier balance.
 
@@ -431,6 +457,9 @@ Same structure as Customers (menu 4), but for suppliers. Tracks how much you owe
 ---
 
 ## 11. Cash & Bank Accounts (Menu 8)
+
+![Cash & Bank](screenshots/14_cash_bank.png)
+*Account balances and transactions*
 
 ### What It Does
 Manages your **cash in hand** and **bank accounts** with full transaction tracking.
@@ -510,6 +539,9 @@ Same concept but to supplier:
 
 ## 14. Shop Settings (Menu 11)
 
+![Settings](screenshots/16_settings.png)
+*System configuration*
+
 ### What It Does
 Configure all **system-wide settings**. Admin only.
 
@@ -543,6 +575,9 @@ Configure all **system-wide settings**. Admin only.
 ---
 
 ## 15. Users & Security (Menu 12)
+
+![Users](screenshots/17_users.png)
+*User management and roles*
 
 ### What It Does
 Manage system users, roles, passwords, and view audit logs. Admin only (except Change My Password).
@@ -995,6 +1030,9 @@ Configure **SMTP email settings**. Currently a **placeholder** — email sending
 
 ## 39. Help & Support (Menu 36)
 
+![Help](screenshots/18_help.png)
+*Built-in help system*
+
 ### What It Does
 Built-in **help system** with searchable topics.
 
@@ -1012,6 +1050,9 @@ Getting Started, Sales/POS, Purchases, Products & Inventory, Customers & Khata, 
 ---
 
 ## 40. Utility Functions (Menu 37)
+
+![Utilities](screenshots/19_utilities.png)
+*DB statistics and tools*
 
 ### What It Does
 Quick utility tools for common system tasks.
