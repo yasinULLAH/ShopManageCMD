@@ -856,6 +856,24 @@ class Database:
             cur.execute("""INSERT INTO users (username, password_hash, salt, role, is_active, force_password_change, created_at)
                            VALUES (?, ?, ?, ?, ?, ?, ?)""",
                         ('admin', pw_hash, salt, 'Admin', 1, 0, now))
+            # Default Manager
+            salt2 = uuid.uuid4().hex
+            pw_hash2 = hashlib.sha256(("manager123" + salt2).encode()).hexdigest()
+            cur.execute("""INSERT INTO users (username, password_hash, salt, role, is_active, force_password_change, created_at)
+                           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                        ('manager', pw_hash2, salt2, 'Manager', 1, 0, now))
+            # Default Cashier
+            salt3 = uuid.uuid4().hex
+            pw_hash3 = hashlib.sha256(("cashier123" + salt3).encode()).hexdigest()
+            cur.execute("""INSERT INTO users (username, password_hash, salt, role, is_active, force_password_change, created_at)
+                           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                        ('cashier', pw_hash3, salt3, 'Cashier', 1, 0, now))
+            # Default Viewer
+            salt4 = uuid.uuid4().hex
+            pw_hash4 = hashlib.sha256(("viewer123" + salt4).encode()).hexdigest()
+            cur.execute("""INSERT INTO users (username, password_hash, salt, role, is_active, force_password_change, created_at)
+                           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                        ('viewer', pw_hash4, salt4, 'Viewer', 1, 0, now))
 
         # Default Accounts
         cur.execute("SELECT COUNT(*) FROM cash_bank_accounts")
@@ -932,7 +950,7 @@ class Database:
         cur.execute("SELECT COUNT(*) FROM help_topics")
         if cur.fetchone()[0] == 0:
             help_data = [
-                ('Getting Started', 'Login with admin/admin123. Navigate using menu numbers. Press 0 to go back, S for global search.', 'start, login, navigation'),
+                ('Getting Started', 'Default logins: admin/admin123 (Admin), manager/manager123 (Manager), cashier/cashier123 (Cashier), viewer/viewer123 (Viewer). Navigate using menu numbers. Press 0 to go back, S for global search.', 'start, login, navigation'),
                 ('Sales / POS', 'Select option 2 from main menu. Add products by SKU/barcode/name. Supports walk-in and registered customers. Credit only for registered.', 'sales, pos, billing, invoice'),
                 ('Purchases', 'Create purchase invoices, track supplier balances, manage purchase returns.', 'purchase, buying, supplier'),
                 ('Products & Inventory', 'Manage products, categories, brands, units. Track stock, price history, stock movements.', 'product, stock, inventory, sku'),

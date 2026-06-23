@@ -72,8 +72,11 @@ The CMD window will **auto-maximize** on launch. The console is set to **90 colu
 | Username | Password | Role |
 |----------|----------|------|
 | `admin` | `admin123` | **Admin** (full access) |
+| `manager` | `manager123` | **Manager** (operations) |
+| `cashier` | `cashier123` | **Cashier** (POS/sales) |
+| `viewer` | `viewer123` | **Viewer** (read-only) |
 
-> **Important**: Change the password immediately after first login (the app will force you).
+> **Important**: Change passwords immediately after first login (the app will force password change on first login for security).
 
 ---
 
@@ -1013,6 +1016,9 @@ Searches across all:
 | Username | Password | Role |
 |----------|----------|------|
 | `admin` | `admin123` | Admin |
+| `manager` | `manager123` | Manager |
+| `cashier` | `cashier123` | Cashier |
+| `viewer` | `viewer123` | Viewer |
 
 ### Default Accounts (Cash/Bank)
 | Account | Type |

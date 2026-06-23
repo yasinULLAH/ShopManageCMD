@@ -37,11 +37,15 @@ python3 ShopApp.cmd
 
 ### Default Login Credentials
 
-> **Username**: `admin`
-> **Password**: `admin123`
-> **Role**: Admin (full access)
+> **Username**: `admin` · **Password**: `admin123` · **Role**: Admin (full access)
+>
+> **Username**: `manager` · **Password**: `manager123` · **Role**: Manager (operations)
+>
+> **Username**: `cashier` · **Password**: `cashier123` · **Role**: Cashier (POS/sales)
+>
+> **Username**: `viewer` · **Password**: `viewer123` · **Role**: Viewer (read-only)
 
-**IMPORTANT**: Change the default password immediately after first login.
+**IMPORTANT**: Change default passwords immediately after first login.
 
 ---
 
@@ -977,7 +981,10 @@ The application uses 50+ SQLite tables including:
 
 | **یوزر نیم** | **پاس ورڈ** | **رول** |
 |--------------|-------------|---------|
-| `admin`      | `admin123`  | ایڈمن   |
+| `admin` | `admin123` | ایڈمن |
+| `manager` | `manager123` | مینیجر |
+| `cashier` | `cashier123` | کیشئر |
+| `viewer` | `viewer123` | ویوور |
 
 **ضروری**: پہلی لاگن کے فوراً بعد ڈیفالٹ پاس ورڈ تبدیل کریں۔
 
