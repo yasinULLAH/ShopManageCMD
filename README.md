@@ -1,5 +1,15 @@
 # Shop Manager CMD - Complete Shop Management System
 
+<div align="center">
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-ShopManageCMD-blue?style=flat-square&logo=github)](https://github.com/yasinULLAH/ShopManageCMD)
+[![Python](https://img.shields.io/badge/Python-3.8+-green?style=flat-square&logo=python)](https://python.org)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-blue?style=flat-square)](https://sqlite.org)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+![Platform](https://img.shields.io/badge/Platform-Windows|Linux|Mac-lightgrey?style=flat-square)
+
+</div>
+
 ## English Documentation
 
 ---
@@ -18,7 +28,7 @@ Shop Manager CMD is a complete, terminal-based retail and wholesale business man
 ### How to Run
 
 ```bash
-# Windows
+# Windows (the CMD window will auto-maximize on launch)
 python "ShopApp (1).cmd"
 
 # Linux/Mac
@@ -35,6 +45,34 @@ python3 ShopApp.cmd
 
 ---
 
+## Console & Interface Enhancements
+
+This application includes several console optimizations for a seamless terminal experience:
+
+### Auto Fullscreen Mode
+- The CMD window automatically maximizes on launch for maximum visibility
+- No need to manually press Alt+Enter or resize the window
+- Works on Windows (other OSes use default terminal behavior)
+
+### Scrollbar-Free Display
+- Console buffer height is set equal to window height
+- No scrollbars appear on menus — all content fits on screen
+- Input prompt is always visible at the bottom without scrolling
+
+### Two-Column Main Menu Layout
+- The main menu (38+ options) is displayed in a compact 2-column grid
+- Reduces vertical space usage by ~50% (19 rows instead of 38+)
+- All options visible at a glance without any scrolling
+
+### Usage-Based Menu Ordering
+- Menu items are ordered by real-world usage frequency
+- **Daily drivers** at top: Dashboard, Sales, Products, Customers, Reports
+- **Weekly tasks** in middle: Purchases, Suppliers, Accounts, Expenses, Returns
+- **Specialized modules** below: Settings, Security, Backup, CSV, Orders, etc.
+- **Advanced features** further down: Accounting, Manufacturing, BOM, etc.
+
+---
+
 ## Complete Feature Modules
 
 ---
@@ -42,6 +80,7 @@ python3 ShopApp.cmd
 ### 1. Dashboard & Today Summary (Main Menu Option 1)
 
 **English**: Provides a real-time executive overview of your business for the current day.
+
 
 **اردو**: آج کے کاروبار کا مکمل جائزہ - آج کی فروخت، خریداری، نقد آمدنی، اخراجات، اور منافع کا تخمینہ۔
 
@@ -90,33 +129,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 3. Purchases Management (Main Menu Option 3)
-
-**English**: Manage purchase invoices from suppliers.
-
-**اردو**: سپلائرز سے خریداری کے انوائس کا انتظام۔
-
-**Features**:
-- Create purchase invoices with batch/expiry tracking / بیچ/ایکسپائری ٹریکنگ کے ساتھ خریداری انوائس
-- Search products by SKU/Barcode/Name / پروڈکٹ تلاش کریں
-- Per-item discount and tax / فی آئٹم ڈسکاؤنٹ اور ٹیکس
-- Freight/extra charges support / فریٹ/اضافی چارجز
-- Automatic stock addition on purchase / خریداری پر خودکار اسٹاک اضافہ
-- Automatic supplier ledger update / خودکار سپلائر کھاتا اپڈیٹ
-- Automatic purchase price update / خودکار خریداری قیمت اپڈیٹ
-- Partial/full payment to supplier / سپلائر کو جزوی/مکمل ادائیگی
-
-**Effects Throughout App**:
-- Product stock increases
-- Product purchase price updates to latest
-- Supplier balance increases (if unpaid)
-- Supplier ledger gets entry
-- Cash/Bank account decreases (if paid)
-- Stock movement log updated
-
----
-
-### 4. Products & Inventory Masters (Main Menu Option 4)
+### 3. Products & Inventory Masters (Main Menu Option 3)
 
 **English**: Complete product catalog and inventory management.
 
@@ -160,7 +173,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 5. Customers & Khata Ledger (Main Menu Option 5)
+### 4. Customers & Khata Ledger (Main Menu Option 4)
 
 **English**: Complete customer management with credit ledger (Khata) system.
 
@@ -184,66 +197,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 6. Suppliers & Khata Ledger (Main Menu Option 6)
-
-**English**: Complete supplier management with payable ledger system.
-
-**اردو**: مکمل سپلائر مینجمنٹ payable کھاتا سسٹم کے ساتھ۔
-
-**Features**: Same structure as Customers module
-- Auto-generated code (SUPP-0001) / خودکار کوڈ
-- Opening balance support / اوپننگ بیلنس
-- Payment to supplier / سپلائر کو ادائیگی
-- Complete supplier ledger / مکمل سپلائر کھاتا
-
-**Effects Throughout App**:
-- Supplier balance increases on purchase (credit)
-- Supplier balance decreases on payment
-- Ledger and cash/bank accounts updated
-
----
-
-### 7. Cash & Bank Accounts (Main Menu Option 7)
-
-**English**: Manage cash in hand and bank accounts with full transaction tracking.
-
-**اردو**: نقد اور بینک اکاؤنٹس کا مکمل انتظام۔
-
-**Features**:
-- View all accounts with current balances / تمام اکاؤنٹس موجودہ بیلنس کے ساتھ
-- Cash/Bank Deposit (+) / نقد/بینک ڈپازٹ
-- Cash/Bank Withdrawal (-) / نقد/بینک وڈڈرا
-- Fund Transfer between accounts / اکاؤنٹس کے درمیان فنڈ ٹرانسفر
-- Transaction Book - view all transactions / ٹرانزیکشن بک
-
-**Default Accounts**: "Cash in Hand" (CASH) and "Main Bank Account" (BANK)
-
-**Effects Throughout App**: Every sale payment, purchase payment, expense, and party payment flows through these accounts. Balances update automatically.
-
----
-
-### 8. Expenses Manager (Main Menu Option 8)
-
-**English**: Record and track business expenses.
-
-**اردو**: کاروباری اخراجات ریکارڈ اور ٹریکنگ۔
-
-**Features**:
-- **Add Expense**: Select category, amount, description, paid-to vendor, date, paying account / اخراجات شامل کریں
-- **View All Expenses**: Filtered by date with category and user who logged / تمام اخراجات دیکھیں
-- **Manage Categories**: Add custom expense categories (Rent, Electricity, Salary, etc.) / اخراجات کی اقسام
-
-**Default Categories**: Rent, Electricity, Salary, Maintenance, Miscellaneous
-
-**Effects Throughout App**:
-- Expense reduces the paying cash/bank account balance
-- Expense reflected in Profit & Loss reports
-- Cash book shows the outflow
-- Daily closing sheet includes expenses
-
----
-
-### 9. Reports & Analytics (Main Menu Option 9)
+### 5. Reports & Analytics (Main Menu Option 5)
 
 **English**: 25+ comprehensive reports across all business areas. All reports can be exported to CSV.
 
@@ -291,6 +245,91 @@ python3 ShopApp.cmd
 23. Audit Logs (Latest 100) / آڈٹ لاگز
 24. User Activity Report / صارف سرگرمی
 25. Daily Closing Financial Sheet / روزانہ کلوزنگ شیٹ
+
+---
+
+### 6. Purchases Management (Main Menu Option 6)
+
+**English**: Manage purchase invoices from suppliers.
+
+**اردو**: سپلائرز سے خریداری کے انوائس کا انتظام۔
+
+**Features**:
+- Create purchase invoices with batch/expiry tracking / بیچ/ایکسپائری ٹریکنگ کے ساتھ خریداری انوائس
+- Search products by SKU/Barcode/Name / پروڈکٹ تلاش کریں
+- Per-item discount and tax / فی آئٹم ڈسکاؤنٹ اور ٹیکس
+- Freight/extra charges support / فریٹ/اضافی چارجز
+- Automatic stock addition on purchase / خریداری پر خودکار اسٹاک اضافہ
+- Automatic supplier ledger update / خودکار سپلائر کھاتا اپڈیٹ
+- Automatic purchase price update / خودکار خریداری قیمت اپڈیٹ
+- Partial/full payment to supplier / سپلائر کو جزوی/مکمل ادائیگی
+
+**Effects Throughout App**:
+- Product stock increases
+- Product purchase price updates to latest
+- Supplier balance increases (if unpaid)
+- Supplier ledger gets entry
+- Cash/Bank account decreases (if paid)
+- Stock movement log updated
+
+---
+
+### 7. Suppliers & Khata Ledger (Main Menu Option 7)
+
+**English**: Complete supplier management with payable ledger system.
+
+**اردو**: مکمل سپلائر مینجمنٹ payable کھاتا سسٹم کے ساتھ۔
+
+**Features**: Same structure as Customers module
+- Auto-generated code (SUPP-0001) / خودکار کوڈ
+- Opening balance support / اوپننگ بیلنس
+- Payment to supplier / سپلائر کو ادائیگی
+- Complete supplier ledger / مکمل سپلائر کھاتا
+
+**Effects Throughout App**:
+- Supplier balance increases on purchase (credit)
+- Supplier balance decreases on payment
+- Ledger and cash/bank accounts updated
+
+---
+
+### 8. Cash & Bank Accounts (Main Menu Option 8)
+
+**English**: Manage cash in hand and bank accounts with full transaction tracking.
+
+**اردو**: نقد اور بینک اکاؤنٹس کا مکمل انتظام۔
+
+**Features**:
+- View all accounts with current balances / تمام اکاؤنٹس موجودہ بیلنس کے ساتھ
+- Cash/Bank Deposit (+) / نقد/بینک ڈپازٹ
+- Cash/Bank Withdrawal (-) / نقد/بینک وڈڈرا
+- Fund Transfer between accounts / اکاؤنٹس کے درمیان فنڈ ٹرانسفر
+- Transaction Book - view all transactions / ٹرانزیکشن بک
+
+**Default Accounts**: "Cash in Hand" (CASH) and "Main Bank Account" (BANK)
+
+**Effects Throughout App**: Every sale payment, purchase payment, expense, and party payment flows through these accounts. Balances update automatically.
+
+---
+
+### 9. Expenses Manager (Main Menu Option 9)
+
+**English**: Record and track business expenses.
+
+**اردو**: کاروباری اخراجات ریکارڈ اور ٹریکنگ۔
+
+**Features**:
+- **Add Expense**: Select category, amount, description, paid-to vendor, date, paying account / اخراجات شامل کریں
+- **View All Expenses**: Filtered by date with category and user who logged / تمام اخراجات دیکھیں
+- **Manage Categories**: Add custom expense categories (Rent, Electricity, Salary, etc.) / اخراجات کی اقسام
+
+**Default Categories**: Rent, Electricity, Salary, Maintenance, Miscellaneous
+
+**Effects Throughout App**:
+- Expense reduces the paying cash/bank account balance
+- Expense reflected in Profit & Loss reports
+- Cash book shows the outflow
+- Daily closing sheet includes expenses
 
 ---
 
@@ -406,23 +445,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 15. Warehouses & Stock Transfer (Main Menu Option 15)
-
-**English**: Multi-warehouse inventory management.
-
-**اردو**: متعدد گودام/ویئر ہاؤس انوینٹری مینجمنٹ۔
-
-**Features**:
-- View/Add/Edit warehouses / گودام دیکھیں/شامل/تبدیل کریں
-- View stock per warehouse / فی گودام اسٹاک دیکھیں
-- Transfer stock between warehouses / گوداموں کے درمیان اسٹاک ٹرانسفر
-- Stock movement log updated automatically / اسٹاک تحریک خودکار اپڈیٹ
-
-**Effects**: Stock transfers deduct from source warehouse and add to destination warehouse. Stock movements table is updated.
-
----
-
-### 16. Quotations (Main Menu Option 16)
+### 15. Quotations (Main Menu Option 15)
 
 **English**: Create price quotations for customers. Convert to sale when accepted.
 
@@ -440,7 +463,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 17. Sales Orders (Main Menu Option 17)
+### 16. Sales Orders (Main Menu Option 16)
 
 **English**: Book orders for future delivery with partial payment tracking.
 
@@ -458,7 +481,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 18. Purchase Orders (Main Menu Option 18)
+### 17. Purchase Orders (Main Menu Option 17)
 
 **English**: Create purchase orders to suppliers. Track received quantities.
 
@@ -475,7 +498,7 @@ python3 ShopApp.cmd
 
 ---
 
-### 19. Delivery Challans (Main Menu Option 19)
+### 18. Delivery Challans (Main Menu Option 18)
 
 **English**: Generate delivery challans for dispatched goods with vehicle/driver tracking.
 
@@ -489,6 +512,22 @@ python3 ShopApp.cmd
 - View challan details / چالان تفصیلات
 
 **Effects**: Creating challan from Sales Order automatically marks the order as DELIVERED.
+
+---
+
+### 19. Warehouses & Stock Transfer (Main Menu Option 19)
+
+**English**: Multi-warehouse inventory management.
+
+**اردو**: متعدد گودام/ویئر ہاؤس انوینٹری مینجمنٹ۔
+
+**Features**:
+- View/Add/Edit warehouses / گودام دیکھیں/شامل/تبدیل کریں
+- View stock per warehouse / فی گودام اسٹاک دیکھیں
+- Transfer stock between warehouses / گوداموں کے درمیان اسٹاک ٹرانسفر
+- Stock movement log updated automatically / اسٹاک تحریک خودکار اپڈیٹ
+
+**Effects**: Stock transfers deduct from source warehouse and add to destination warehouse. Stock movements table is updated.
 
 ---
 
@@ -971,16 +1010,7 @@ The application uses 50+ SQLite tables including:
 - خودکار کسٹمر کھاتا اپڈیٹ
 - رسید پرنٹ/سیو کریں
 
-### 3. خریداری مینجمنٹ
-
-- خریداری انوائس بیچ/ایکسپائری ٹریکنگ کے ساتھ
-- سپلائر سے خریداری
-- خودکار اسٹاک اضافہ
-- خودکار خریداری قیمت اپڈیٹ
-- فریٹ/اضافی چارجز
-- سپلائر کو ادائیگی
-
-### 4. پروڈکٹس اور انوینٹری
+### 3. پروڈکٹس اور انوینٹری
 
 **زمرے**: شامل/تبدیل/حذف
 **برانڈز**: شامل/تبدیل/حذف
@@ -1001,7 +1031,7 @@ The application uses 50+ SQLite tables including:
 **قیمت کی تاریخ**: ہر قیمت تبدیلی کا ریکارڈ
 **اسٹاک تحریک**: تمام اسٹاک تبدیلیوں کا ریکارڈ
 
-### 5. کسٹمرز اور کھاتا
+### 4. کسٹمرز اور کھاتا
 
 - نیا کسٹمر شامل کریں (خودکار کوڈ: CUST-0001)
 - نام، فون، ایڈریس، ای میل
@@ -1016,28 +1046,7 @@ The application uses 50+ SQLite tables including:
 - ادائیگی: کسٹمر بیلنس کم ہوتا ہے
 - نقد/بینک اکاؤنٹ بڑھتا ہے
 
-### 6. سپلائرز اور کھاتا
-
-- نیا سپلائر (خودکار کوڈ: SUPP-0001)
-- خریداری پر سپلائر بیلنس بڑھتا ہے
-- ادائیگی پر سپلائر بیلنس کم ہوتا ہے
-- مکمل سپلائر کھاتا
-
-### 7. نقد اور بینک اکاؤنٹس
-
-- ڈیفالٹ: "Cash in Hand" اور "Main Bank Account"
-- ڈپازٹ (+) / وڈڈرا (-)
-- اکاؤنٹس کے درمیان فنڈ ٹرانسفر
-- تمام ٹرانزیکشنز کی کتاب
-
-### 8. اخراجات
-
-- اخراجات شامل کریں (زمرہ، رقم، وضاحت، تاریخ)
-- اخراجات کی اقسام مینج کریں
-- ڈیفالٹ: Rent, Electricity, Salary, Maintenance, Miscellaneous
-- اخراجات منافع/نقصان رپورٹ میں شامل
-
-### 9. رپورٹس (25+)
+### 5. رپورٹس (25+)
 
 **فروخت**: آج، تاریخ وار، پروڈکٹ وار، کسٹمر وار
 **خریداری**: آج، تاریخ وار، سپلائر وار
@@ -1047,6 +1056,36 @@ The application uses 50+ SQLite tables including:
 **واپسی**: فروخت واپسی، خریداری واپسی
 **ٹیکس**: ٹیکس خلاصہ، ڈسکاؤنٹس
 **سسٹم**: آڈٹ لاگز، صارف سرگرمی، روزانہ کلوزنگ
+
+### 6. خریداری مینجمنٹ
+
+- خریداری انوائس بیچ/ایکسپائری ٹریکنگ کے ساتھ
+- سپلائر سے خریداری
+- خودکار اسٹاک اضافہ
+- خودکار خریداری قیمت اپڈیٹ
+- فریٹ/اضافی چارجز
+- سپلائر کو ادائیگی
+
+### 7. سپلائرز اور کھاتا
+
+- نیا سپلائر (خودکار کوڈ: SUPP-0001)
+- خریداری پر سپلائر بیلنس بڑھتا ہے
+- ادائیگی پر سپلائر بیلنس کم ہوتا ہے
+- مکمل سپلائر کھاتا
+
+### 8. نقد اور بینک اکاؤنٹس
+
+- ڈیفالٹ: "Cash in Hand" اور "Main Bank Account"
+- ڈپازٹ (+) / وڈڈرا (-)
+- اکاؤنٹس کے درمیان فنڈ ٹرانسفر
+- تمام ٹرانزیکشنز کی کتاب
+
+### 9. اخراجات
+
+- اخراجات شامل کریں (زمرہ، رقم، وضاحت، تاریخ)
+- اخراجات کی اقسام مینج کریں
+- ڈیفالٹ: Rent, Electricity, Salary, Maintenance, Miscellaneous
+- اخراجات منافع/نقصان رپورٹ میں شامل
 
 ### 10. واپسی پروسیسنگ
 
@@ -1084,35 +1123,35 @@ The application uses 50+ SQLite tables including:
 - پروڈکٹس، کسٹمرز، سپلائرز امپورٹ
 - INSERT OR IGNORE - موجودہ ریکارڈز.skip
 
-### 15. گودام/ویئر ہاؤس
-
-- متعدد گودام مینجمنٹ
-- فی گودام اسٹاک
-- گوداموں کے درمیان اسٹاک ٹرانسفر
-
-### 16. کوٹیشنز
+### 15. کوٹیشنز
 
 - قیمت کوٹیشن بنائیں
 - منظور ہونے پر سیل میں تبدیل
 - اسٹیٹس: DRAFT، ACTIVE، CONVERTED، CANCELLED
 
-### 17. سیل آرڈرز
+### 16. سیل آرڈرز
 
 - مستقبل ڈیلیوری کے لیے آرڈر بک کریں
 - ایڈوانس ادائیگی
 - ڈیلیورڈ بمقابلہ آرڈرڈ ٹریکنگ
 
-### 18. خریداری آرڈرز
+### 17. خریداری آرڈرز
 
 - سپلائر کو PO بنائیں
 - متوقع ڈیلیوری تاریخ
 - موصول بمقابلہ آرڈرڈ ٹریکنگ
 
-### 19. ڈیلیوری چالان
+### 18. ڈیلیوری چالان
 
 - ڈیلیوری چالان بنائیں
 - سیل آرڈر سے خودکار چالان
 - گاڑی نمبر، ڈرائیور، فون ٹریکنگ
+
+### 19. گودام/ویئر ہاؤس
+
+- متعدد گودام مینجمنٹ
+- فی گودام اسٹاک
+- گوداموں کے درمیان اسٹاک ٹرانسفر
 
 ### 20. کریڈٹ/ڈیبٹ نوٹس
 
@@ -1255,9 +1294,11 @@ The application uses 50+ SQLite tables including:
 
 ## License & Support
 
-This is a proprietary application. All rights reserved.
+This project is **open source** under the MIT License.
 
-For support, contact the developer.
+- **GitHub Repository**: [https://github.com/yasinULLAH/ShopManageCMD](https://github.com/yasinULLAH/ShopManageCMD)
+- **Issues & Feature Requests**: Please open an issue on GitHub
+- **Pull Requests**: Contributions are welcome!
 
 ---
 
