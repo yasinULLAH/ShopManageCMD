@@ -1,4 +1,4 @@
-# Shop Manager CMD - Complete Shop Management System
+# Shop Manager - Complete Business Management System
 
 <div align="center">
 
@@ -16,7 +16,7 @@
 
 ### Overview
 
-Shop Manager CMD is a complete, terminal-based retail and wholesale business management system built in Python with SQLite database. It provides comprehensive tools for managing sales, purchases, inventory, accounting, customers, suppliers, employees, and much more — all from a command-line interface.
+Shop Manager is a complete, terminal-based retail and wholesale business management system built in Python with SQLite database. It provides comprehensive tools for managing sales, purchases, inventory, accounting, customers, suppliers, employees, and much more — all from a command-line interface.
 
 ### Technology Stack
 
@@ -29,7 +29,7 @@ Shop Manager CMD is a complete, terminal-based retail and wholesale business man
 
 ```bash
 # Windows (the CMD window will auto-maximize on launch)
-python "ShopApp (1).cmd"
+python ShopApp.cmd
 
 # Linux/Mac
 python3 ShopApp.cmd
@@ -37,9 +37,9 @@ python3 ShopApp.cmd
 
 ### Default Login Credentials
 
-| Username | Password   | Role  |
-|----------|------------|-------|
-| admin    | admin123   | Admin |
+> **Username**: `admin`
+> **Password**: `admin123`
+> **Role**: Admin (full access)
 
 **IMPORTANT**: Change the default password immediately after first login.
 
@@ -975,9 +975,9 @@ The application uses 50+ SQLite tables including:
 
 ### ڈیفالٹ لاگن
 
-| یوزر نیم | پاس ورڈ | رول |
-|----------|----------|-----|
-| admin | admin123 | ایڈمن |
+| **یوزر نیم** | **پاس ورڈ** | **رول** |
+|--------------|-------------|---------|
+| `admin`      | `admin123`  | ایڈمن   |
 
 **ضروری**: پہلی لاگن کے فوراً بعد ڈیفالٹ پاس ورڈ تبدیل کریں۔
 
@@ -1302,4 +1302,4 @@ This project is **open source** under the MIT License.
 
 ---
 
-*Shop Manager CMD - Your Complete Business Management Solution*
+*Shop Manager - Your Complete Business Management Solution*
