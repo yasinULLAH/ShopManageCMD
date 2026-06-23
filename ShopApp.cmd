@@ -1114,6 +1114,7 @@ class MasterManager:
         self.audit = audit
 
     def menu(self):
+        if not self.auth.require_role(['Admin','Manager','Cashier']): return
         while True:
             print_header("MASTER DATA MANAGEMENT")
             print(" 1. Manage Categories")
@@ -1398,6 +1399,8 @@ class PartyManager:
         self.prefix = 'CUST-' if party_type == 'customers' else 'SUPP-'
 
     def menu(self):
+        allowed = ['Admin','Manager','Cashier'] if self.ptype == 'customers' else ['Admin','Manager']
+        if not self.auth.require_role(allowed): return
         while True:
             print_header(f"{self.singular.upper()} MANAGEMENT & KHATA")
             print(f" 1. Add New {self.singular}")
@@ -1565,6 +1568,7 @@ class FinanceManager:
         self.db = db; self.auth = auth; self.audit = audit
 
     def menu(self):
+        if not self.auth.require_role(['Admin','Manager','Cashier']): return
         while True:
             print_header("CASH & BANK MANAGEMENT")
             print(" 1. View Accounts & Balances")
@@ -1653,6 +1657,7 @@ class ExpenseManager:
         self.db = db; self.auth = auth; self.audit = audit
 
     def menu(self):
+        if not self.auth.require_role(['Admin','Manager']): return
         while True:
             print_header("EXPENSE MANAGEMENT")
             print(" 1. Add New Expense")
@@ -1730,6 +1735,8 @@ class TradeManager:
 
     def menu(self):
         lbl = "SALES / POS" if self.is_sale else "PURCHASES"
+        allowed = ['Admin','Manager','Cashier'] if self.is_sale else ['Admin','Manager']
+        if not self.auth.require_role(allowed): return
         while True:
             print_header(f"{lbl} MANAGEMENT")
             print(f" 1. Create New {'Sale Invoice (POS)' if self.is_sale else 'Purchase Invoice'}")
@@ -2061,6 +2068,7 @@ class ReportManager:
         self.db = db; self.auth = auth
 
     def menu(self):
+        if not self.auth.require_role(['Admin','Manager','Cashier','Viewer']): return
         while True:
             print_header("REPORTS & ANALYTICS MODULE")
             print(" 1. Sales Reports (Daily, Date-wise, Product-wise, Customer-wise)")
@@ -3623,8 +3631,8 @@ class SecurityManager:
         self.db = db; self.auth = auth; self.audit = audit
 
     def menu(self):
+        if not self.auth.require_role(['Admin','Manager','Cashier','Viewer']): return
         while True:
-            print_header("USERS & SECURITY MODULE")
             print(" 1. Add New System User")
             print(" 2. View / Edit Users & Roles")
             print(" 3. Change My Password")
@@ -3692,10 +3700,12 @@ class SettingsController:
 # =====================================================================
 
 class Dashboard:
-    def __init__(self, db):
+    def __init__(self, db, auth):
         self.db = db
+        self.auth = auth
 
     def show(self):
+        if not self.auth.require_role(['Admin', 'Manager', 'Cashier', 'Viewer']): return
         today = datetime.date.today().isoformat()
         curr = self.db.get_setting('currency', '$')
         
@@ -3743,7 +3753,7 @@ class ShopManagerApp:
         self.auth = AuthManager(self.db)
         self.audit = AuditManager(self.db, self.auth)
         
-        self.dash = Dashboard(self.db)
+        self.dash = Dashboard(self.db, self.auth)
         self.sales = TradeManager(self.db, self.auth, self.audit, 'SALES')
         self.purchases = TradeManager(self.db, self.auth, self.audit, 'PURCHASES')
         self.masters = MasterManager(self.db, self.auth, self.audit)
@@ -3789,6 +3799,47 @@ class ShopManagerApp:
             self.main_menu()
 
     def main_menu(self):
+        access_map = {
+            '1': ['Admin','Manager','Cashier','Viewer'],
+            '2': ['Admin','Manager','Cashier'],
+            '3': ['Admin','Manager','Cashier'],
+            '4': ['Admin','Manager','Cashier'],
+            '5': ['Admin','Manager','Cashier','Viewer'],
+            '6': ['Admin','Manager'],
+            '7': ['Admin','Manager'],
+            '8': ['Admin','Manager','Cashier'],
+            '9': ['Admin','Manager'],
+            '10': ['Admin','Manager','Cashier'],
+            '11': ['Admin'],
+            '12': ['Admin','Manager','Cashier','Viewer'],
+            '13': ['Admin'],
+            '14': ['Admin','Manager'],
+            '15': ['Admin','Manager','Cashier'],
+            '16': ['Admin','Manager','Cashier'],
+            '17': ['Admin','Manager'],
+            '18': ['Admin','Manager'],
+            '19': ['Admin','Manager'],
+            '20': ['Admin','Manager'],
+            '21': ['Admin','Manager'],
+            '22': ['Admin','Manager'],
+            '23': ['Admin','Manager','Cashier'],
+            '24': ['Admin','Manager'],
+            '25': ['Admin','Manager'],
+            '26': ['Admin','Manager'],
+            '27': ['Admin','Manager','Cashier'],
+            '28': ['Admin','Manager'],
+            '29': ['Admin','Manager'],
+            '30': ['Admin','Manager'],
+            '31': ['Admin','Manager'],
+            '32': ['Admin','Manager'],
+            '33': ['Admin','Manager'],
+            '34': ['Admin','Manager','Cashier'],
+            '35': ['Admin'],
+            '36': ['Admin','Manager','Cashier','Viewer'],
+            '37': ['Admin','Manager'],
+            '38': ['Admin','Manager','Cashier','Viewer'],
+        }
+
         while self.auth.current_user:
             u = self.auth.current_user
             print_header(f"MAIN MENU - Logged in as: {u['username']} ({u['role']})")
@@ -3832,6 +3883,8 @@ class ShopManagerApp:
                 ("37", "Utility Functions"),
                 ("38", "Logout"),
             ]
+            role = u['role']
+            items = [(k, v) for k, v in items if role in access_map.get(k, [])]
             mid = (len(items) + 1) // 2
             col1 = items[:mid]
             col2 = items[mid:]
@@ -3889,6 +3942,7 @@ class ShopManagerApp:
                 sys.exit(0)
 
     def returns_menu(self):
+        if not self.auth.require_role(['Admin','Manager','Cashier']): return
         print_header("RETURNS PROCESSING MODULE")
         print(" 1. Process Customer Sale Return")
         print(" 2. Process Supplier Purchase Return")

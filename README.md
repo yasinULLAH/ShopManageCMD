@@ -47,6 +47,59 @@ python3 ShopApp.cmd
 
 **IMPORTANT**: Change default passwords immediately after first login.
 
+### Role Permission Matrix
+
+| Menu | Option | Admin | Manager | Cashier | Viewer |
+|------|--------|:-----:|:-------:|:-------:|:------:|
+| 1 | Dashboard & Today Summary | ✓ | ✓ | ✓ | ✓ |
+| 2 | Sales / POS Terminal | ✓ | ✓ | ✓ | |
+| 3 | Products & Inventory | ✓ | ✓ | ✓ | |
+| 4 | Customers & Khata | ✓ | ✓ | ✓ | |
+| 5 | Reports & Analytics | ✓ | ✓ | ✓ | ✓ |
+| 6 | Purchases Management | ✓ | ✓ | | |
+| 7 | Suppliers & Khata | ✓ | ✓ | | |
+| 8 | Cash & Bank Accounts | ✓ | ✓ | ✓ | |
+| 9 | Expenses Manager | ✓ | ✓ | | |
+| 10 | Returns Processing | ✓ | ✓ | ✓ | |
+| 11 | Shop Settings | ✓ | | | |
+| 12 | Users & Security | ✓ | ✓ | ✓ | ✓* |
+| 13 | Backup & Restore DB | ✓ | | | |
+| 14 | Import / Export CSV | ✓ | ✓ | | |
+| 15 | Quotations | ✓ | ✓ | ✓ | |
+| 16 | Sales Orders | ✓ | ✓ | ✓ | |
+| 17 | Purchase Orders | ✓ | ✓ | | |
+| 18 | Delivery Challans | ✓ | ✓ | | |
+| 19 | Warehouses | ✓ | ✓ | | |
+| 20 | Credit / Debit Notes | ✓ | ✓ | | |
+| 21 | Employees | ✓ | ✓ | | |
+| 22 | Commissions | ✓ | ✓ | | |
+| 23 | Loyalty Points | ✓ | ✓ | ✓ | |
+| 24 | Price Lists | ✓ | ✓ | | |
+| 25 | Promotions & Coupons | ✓ | ✓ | | |
+| 26 | Serial Numbers | ✓ | ✓ | | |
+| 27 | Service / Repair Jobs | ✓ | ✓ | ✓ | |
+| 28 | Bill of Materials | ✓ | ✓ | | |
+| 29 | Manufacturing Jobs | ✓ | ✓ | | |
+| 30 | Accounting (Ledger) | ✓ | ✓ | | |
+| 31 | Financial Statements | ✓ | ✓ | | |
+| 32 | Fixed Assets | ✓ | ✓ | | |
+| 33 | Budgets | ✓ | ✓ | | |
+| 34 | Cash Register | ✓ | ✓ | ✓ | |
+| 35 | Email Config | ✓ | | | |
+| 36 | Help & Support | ✓ | ✓ | ✓ | ✓ |
+| 37 | Utility Functions | ✓ | ✓ | | |
+| 38 | Logout | ✓ | ✓ | ✓ | ✓ |
+| S | Global Quick Search | ✓ | ✓ | ✓ | ✓ |
+
+> \* Users & Security — only "Change My Password" is available to all roles; user management and audit log are Admin-only.
+
+### Key Permissions by Role
+
+- **Admin** — Full access to all modules, settings, and configuration.
+- **Manager** — All operational features except system settings, user management, backup, email config.
+- **Cashier** — Point of sale, customers, quotations, sales orders, loyalty, cash register, viewing products and service jobs. Cannot manage purchases, suppliers, expenses, or admin functions.
+- **Viewer** — Dashboard, reports, help, change own password, and global search. Read-only access to operational data.
+
 ---
 
 ## Console & Interface Enhancements

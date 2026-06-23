@@ -92,19 +92,74 @@ The CMD window will **auto-maximize** on launch. The console is set to **90 colu
 
 ### User Roles & Permissions
 
+The main menu dynamically hides options that your role cannot access. Each role has a predefined permission set:
+
+| # | Menu Option | Admin | Manager | Cashier | Viewer |
+|---|-------------|:-----:|:-------:|:-------:|:------:|
+| 1 | Dashboard & Today Summary | ✓ | ✓ | ✓ | ✓ |
+| 2 | Sales / POS Terminal | ✓ | ✓ | ✓ | |
+| 3 | Products & Inventory | ✓ | ✓ | ✓ | |
+| 4 | Customers & Khata | ✓ | ✓ | ✓ | |
+| 5 | Reports & Analytics | ✓ | ✓ | ✓ | ✓ |
+| 6 | Purchases Management | ✓ | ✓ | | |
+| 7 | Suppliers & Khata | ✓ | ✓ | | |
+| 8 | Cash & Bank Accounts | ✓ | ✓ | ✓ | |
+| 9 | Expenses Manager | ✓ | ✓ | | |
+| 10 | Returns Processing | ✓ | ✓ | ✓ | |
+| 11 | Shop Settings | ✓ | | | |
+| 12 | Users & Security | ✓ | ✓* | ✓* | ✓* |
+| 13 | Backup & Restore DB | ✓ | | | |
+| 14 | Import / Export CSV | ✓ | ✓ | | |
+| 15 | Quotations | ✓ | ✓ | ✓ | |
+| 16 | Sales Orders | ✓ | ✓ | ✓ | |
+| 17 | Purchase Orders | ✓ | ✓ | | |
+| 18 | Delivery Challans | ✓ | ✓ | | |
+| 19 | Warehouses | ✓ | ✓ | | |
+| 20 | Credit / Debit Notes | ✓ | ✓ | | |
+| 21 | Employees | ✓ | ✓ | | |
+| 22 | Commissions | ✓ | ✓ | | |
+| 23 | Loyalty Points | ✓ | ✓ | ✓ | |
+| 24 | Price Lists | ✓ | ✓ | | |
+| 25 | Promotions & Coupons | ✓ | ✓ | | |
+| 26 | Serial Numbers | ✓ | ✓ | | |
+| 27 | Service / Repair Jobs | ✓ | ✓ | ✓ | |
+| 28 | Bill of Materials | ✓ | ✓ | | |
+| 29 | Manufacturing Jobs | ✓ | ✓ | | |
+| 30 | Accounting (Ledger) | ✓ | ✓ | | |
+| 31 | Financial Statements | ✓ | ✓ | | |
+| 32 | Fixed Assets | ✓ | ✓ | | |
+| 33 | Budgets | ✓ | ✓ | | |
+| 34 | Cash Register | ✓ | ✓ | ✓ | |
+| 35 | Email Config | ✓ | | | |
+| 36 | Help & Support | ✓ | ✓ | ✓ | ✓ |
+| 37 | Utility Functions | ✓ | ✓ | | |
+| 38 | Logout | ✓ | ✓ | ✓ | ✓ |
+| S | Global Quick Search | ✓ | ✓ | ✓ | ✓ |
+
+> \* Users & Security — only "Change My Password" is available to all roles; user management and audit log are Admin-only.
+
+**Role summaries:**
+
 | Role | What They Can Do |
 |------|------------------|
-| **Admin** | Everything — all menus, settings, user management, backups, audit logs |
-| **Manager** | All operational tasks except: user management, settings, backups, audit, financial reports |
-| **Cashier** | Sales/POS, Quotations (view/create), Sales Orders, Service jobs, Loyalty, Cash Register |
-| **Viewer** | Read-only — can view reports but not create/edit anything |
+| **Admin** | Everything — all menus, settings, user management, backups, audit logs, full configuration |
+| **Manager** | All operational tasks (sales, purchases, products, customers, suppliers, accounts, expenses, reports, warehouses, manufacturing, service, etc.) but **cannot** access system settings, user management, backup/restore, email config, or clear sample data |
+| **Cashier** | Point of sale, customer management, quotations, sales orders, loyalty, cash register, returns, service job viewing. **Cannot** manage purchases, suppliers, expenses, accounting, or any admin functions |
+| **Viewer** | Read-only access to dashboard, reports, and help topics. Can change own password and use global search. **Cannot** create, edit, or delete any data |
 
 ### Where Permissions Take Effect
 
-- **Admin-only**: Settings (menu 11), Users & Security (menu 12), Backup (menu 13), Email Config (menu 35), Financial Reports, Audit Reports
-- **Admin/Manager-only**: Import/Export CSV (14), Warehouses (19), Credit/Debit Notes (20), Employees (21), Commissions (22), Price Lists (24), Promotions (25), Serial Numbers (26), BOM (28), Manufacturing (29), Accounting (30), Financial Statements (31), Fixed Assets (32), Budgets (33), Utilities (37)
-- **Admin/Manager/Cashier**: Sales (2), Quotations (15), Sales Orders (16), Service (27), Loyalty (23), Cash Register (34)
-- **All roles**: Dashboard (1), Reports — non-financial (5), Help (36)
+Permissions are enforced at **two levels**:
+
+1. **Frontend (Menu Filtering)**: The main menu only shows options your role is allowed to access. Hidden options cannot be selected.
+2. **Backend (Method Guards)**: Even if a restricted option number is entered manually, a second check inside each module blocks access and displays *"Access Denied"*.
+
+**Role access groups:**
+- **Admin-only**: Settings (menu 11), Users & Security — full (menu 12), Backup (menu 13), Email Config (menu 35), Clear Sample Data, Audit Reports
+- **Admin/Manager-only**: Purchases (6), Suppliers (7), Expenses (9), Purchase Orders (17), Delivery Challans (18), Warehouses (19), Credit/Debit Notes (20), Employees (21), Commissions (22), Price Lists (24), Promotions (25), Serial Numbers (26), BOM (28), Manufacturing (29), Accounting (30), Financial Statements (31), Fixed Assets (32), Budgets (33), Import/Export (14), Utilities (37)
+- **Admin/Manager/Cashier**: Sales (2), Products (3), Customers (4), Cash & Bank (8), Returns (10), Quotations (15), Sales Orders (16), Service (27), Loyalty (23), Cash Register (34)
+- **All roles**: Dashboard (1), Reports (5), Help (36), Logout (38), Global Search (S)
+- **All roles (limited)**: Users & Security — "Change My Password" only (menu 12)
 
 ---
 
