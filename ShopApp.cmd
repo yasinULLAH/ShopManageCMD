@@ -3552,7 +3552,7 @@ class UtilityManager:
         if not self.auth.require_role(['Admin', 'Manager']): return
         while True:
             print_header("UTILITIES")
-            print(" 1. Low Stock Report\n 2. Expired Products\n 3. DB Statistics\n 4. Bulk Price Update\n 5. Rebuild Stock\n 0. Back")
+            print(" 1. Low Stock Report\n 2. Expired Products\n 3. DB Statistics\n 4. Bulk Price Update\n 5. Rebuild Stock\n 6. Clear Sample Data\n 0. Back")
             c = input(" Select: ").strip()
             if c == '1':
                 warn = self.db.get_setting('low_stock_warn','10')
@@ -3590,6 +3590,31 @@ class UtilityManager:
                         for r in (self.db.fetch_all(t) or []):
                             if r[0] and r[1]: self.db.execute(f"UPDATE products SET current_stock=CAST(CAST(current_stock AS REAL){sgn}? AS TEXT) WHERE id=?", (str(r[1]), r[0]))
                 self.audit.log("REBUILD_STOCK", "Done"); print(" [+] Stock rebuilt!"); input(" Press [Enter]...")
+            elif c == '6':
+                if not self.auth.require_role(['Admin']): continue
+                print_header("CLEAR SAMPLE DATA")
+                print(" [!] This will DELETE all sample data and keep only:")
+                print("     - Default user logins (admin, manager, cashier, viewer)")
+                print("     - System settings, categories, brands, units")
+                print("     - Chart of accounts, expense categories")
+                print("     - All account balances will be reset to $0.00")
+                cf = input(" Type 'CONFIRM' to proceed: ").strip()
+                if cf != 'CONFIRM': print(" [!] Cancelled"); input(" Press [Enter]..."); continue
+                with self.db.conn:
+                    for table in ['sale_items','sale_return_items','purchase_items','purchase_return_items','sales','purchases','sale_returns','purchase_returns','quotations','quotation_items','sales_orders','sales_order_items','purchase_orders','purchase_order_items','delivery_challans','delivery_challan_items','credit_notes','credit_note_items','debit_notes','debit_note_items','stock_movements','stock_adjustments','cash_bank_transactions','customer_ledger','supplier_ledger','expenses','commissions','loyalty_transactions','loyalty_points','service_jobs','service_parts','manufacturing_jobs','manufacturing_materials','product_price_history','serial_numbers','warehouse_stock','register_transactions','cash_registers','general_ledger','depreciation_entries','budget_items','budgets']:
+                        try: self.db.execute(f"DELETE FROM {table}")
+                        except: pass
+                    self.db.execute("DELETE FROM products")
+                    self.db.execute("DELETE FROM customers")
+                    self.db.execute("DELETE FROM suppliers")
+                    self.db.execute("DELETE FROM employees")
+                    self.db.execute("UPDATE cash_bank_accounts SET balance='0.00'")
+                    self.db.execute("UPDATE warehouses SET capacity_used='0.00'")
+                    self.db.execute("UPDATE categories SET item_count='0'")
+                    self.db.execute("UPDATE brands SET item_count='0'")
+                self.audit.log("CLEAR_SAMPLE", f"All sample data cleared by {self.auth.current_user.get('username','?')}")
+                print(" [+] All sample data cleared! Default logins preserved.")
+                input(" Press [Enter]...")
             elif c == '0': break
 
 

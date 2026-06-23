@@ -863,8 +863,9 @@ This application includes several console optimizations for a seamless terminal 
 3. **DB Statistics**: Record counts for all tables / ڈیٹابیس شماریات
 4. **Bulk Price Update**: Increase prices by % or set fixed amount across products / بلک قیمت اپڈیٹ
 5. **Rebuild Stock from Transactions**: Recalculate all stock levels from sales/purchases/returns transactions / ٹرانزیکشنز سے اسٹک دوبارہ بنائیں
+6. **Clear Sample Data** (Admin only): Delete all sample data while preserving default logins (admin, manager, cashier, viewer), system settings, and configuration data / نمونہ ڈیٹا صاف کریں
 
-**Effects**: Bulk price update modifies product sale_price and logs price history. Rebuild stock recalculates current_stock from all transaction tables.
+**Effects**: Bulk price update modifies product sale_price and logs price history. Rebuild stock recalculates current_stock from all transaction tables. **Clear Sample Data** wipes all products, customers, suppliers, employees, sales, purchases, expenses, and transactions — keeping only user accounts, categories, brands, units, accounts (reset to $0.00), and system settings.
 
 ---
 
@@ -1273,6 +1274,7 @@ The application uses 50+ SQLite tables including:
 - ڈیٹابیس شماریات
 - بلک قیمت اپڈیٹ
 - ٹرانزیکشنز سے اسٹاک دوبارہ بنائیں
+- نمونہ ڈیٹا صاف کریں (صرف ایڈمن)
 
 ---
 
