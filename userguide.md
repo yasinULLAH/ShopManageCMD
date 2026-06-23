@@ -968,6 +968,7 @@ Quick utility tools for common system tasks.
 | 3. DB Statistics | Record counts for all database tables |
 | 4. Bulk Price Update | Increase prices by % or set fixed amount across products |
 | 5. Rebuild Stock | Recalculate all stock levels from transactions |
+| 6. Clear Sample Data | Delete all sample data, keep only default logins |
 
 ### Bulk Price Update
 - Choose % increase or fixed amount
@@ -976,6 +977,15 @@ Quick utility tools for common system tasks.
 
 ### Rebuild Stock
 Use this if stock levels get out of sync. It recalculates `current_stock` for all products from sales, purchases, returns, and adjustments.
+
+### Clear Sample Data (Admin Only)
+Deletes all sample/transactional data from the system while preserving:
+- Default user logins (admin, manager, cashier, viewer)
+- System settings and configuration (categories, brands, units)
+- Chart of accounts and expense categories
+- Account balances are reset to $0.00
+
+> **Warning**: This action cannot be undone. Type `CONFIRM` to proceed. All products, customers, suppliers, employees, sales, purchases, expenses, and transactions will be permanently deleted.
 
 ---
 
